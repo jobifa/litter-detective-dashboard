@@ -31,16 +31,23 @@ const Navbar: React.FC = () => {
     <nav className="bg-white shadow-lg border-b-2 border-green-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center space-x-3">
-            <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-r from-green-500 to-blue-500 rounded-lg">
-              <Trash2 className="w-6 h-6 text-white" />
+          <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-3">
+              <img 
+                src="/lovable-uploads/5019ddbe-68f5-4d79-ac9c-27eab6c26c50.png" 
+                alt="Isabela State University Logo"
+                className="w-12 h-12 object-contain"
+              />
+              <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-r from-green-500 to-blue-500 rounded-lg">
+                <Trash2 className="w-6 h-6 text-white" />
+              </div>
             </div>
             <div>
               <h1 className="text-xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
-                Litter Detective
+                Plastic Litter Characterization
               </h1>
               <p className="text-xs text-gray-500">
-                {user?.role === 'admin' ? 'Admin Dashboard' : 'Environmental Monitoring'}
+                Isabela State University • {user?.role === 'admin' ? 'Admin Dashboard' : 'Environmental Monitoring'}
               </p>
             </div>
           </div>
@@ -69,7 +76,7 @@ const Navbar: React.FC = () => {
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={handleSettings} className="cursor-pointer">
                   <Settings className="mr-2 h-4 w-4" />
-                  <span>Settings</span>
+                  <span>Account Settings</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
                   <LogOut className="mr-2 h-4 w-4" />

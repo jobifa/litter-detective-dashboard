@@ -10,7 +10,8 @@ import {
   Trash2,
   Database,
   DatabaseBackup,
-  DatabaseZap
+  DatabaseZap,
+  Settings
 } from 'lucide-react';
 
 const Sidebar: React.FC = () => {
@@ -21,6 +22,7 @@ const Sidebar: React.FC = () => {
     { to: '/capture', icon: Camera, label: 'Capture & Analyze' },
     { to: '/history', icon: Calendar, label: 'History' },
     { to: '/saved', icon: Save, label: 'Saved Detections' },
+    { to: '/settings', icon: Settings, label: 'Account Settings' },
   ];
 
   const adminNavItems = [
@@ -29,6 +31,7 @@ const Sidebar: React.FC = () => {
     { to: '/admin/analytics', icon: DatabaseZap, label: 'Analytics' },
     { to: '/capture', icon: Camera, label: 'Capture & Analyze' },
     { to: '/history', icon: Calendar, label: 'History' },
+    { to: '/settings', icon: Settings, label: 'Account Settings' },
   ];
 
   const navItems = user?.role === 'admin' ? adminNavItems : userNavItems;

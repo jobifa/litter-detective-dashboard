@@ -11,6 +11,7 @@ import Dashboard from "./pages/Dashboard";
 import Capture from "./pages/Capture";
 import History from "./pages/History";
 import Saved from "./pages/Saved";
+import Settings from "./pages/Settings";
 import AdminDashboard from "./pages/AdminDashboard";
 import UserManagement from "./pages/UserManagement";
 import Analytics from "./pages/Analytics";
@@ -70,6 +71,11 @@ const AppRoutes = () => {
       <Route path="/saved" element={
         <ProtectedRoute>
           <Saved />
+        </ProtectedRoute>
+      } />
+      <Route path="/settings" element={
+        <ProtectedRoute>
+          <Settings />
         </ProtectedRoute>
       } />
       <Route path="/admin/dashboard" element={
