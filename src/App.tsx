@@ -9,6 +9,11 @@ import Layout from "./components/Layout";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Capture from "./pages/Capture";
+import History from "./pages/History";
+import Saved from "./pages/Saved";
+import AdminDashboard from "./pages/AdminDashboard";
+import UserManagement from "./pages/UserManagement";
+import Analytics from "./pages/Analytics";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +36,16 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   return <Layout>{children}</Layout>;
 };
 
+const AdminRoute = ({ children }: { children: React.ReactNode }) => {
+  const { user } = useAuth();
+  
+  if (user?.role !== 'admin') {
+    return <Navigate to="/dashboard" replace />;
+  }
+  
+  return <>{children}</>;
+};
+
 const AppRoutes = () => {
   const { user } = useAuth();
 
@@ -45,6 +60,37 @@ const AppRoutes = () => {
       <Route path="/capture" element={
         <ProtectedRoute>
           <Capture />
+        </ProtectedRoute>
+      } />
+      <Route path="/history" element={
+        <ProtectedRoute>
+          <History />
+        </ProtectedRoute>
+      } />
+      <Route path="/saved" element={
+        <ProtectedRoute>
+          <Saved />
+        </ProtectedRoute>
+      } />
+      <Route path="/admin/dashboard" element={
+        <ProtectedRoute>
+          <AdminRoute>
+            <AdminDashboard />
+          </AdminRoute>
+        </ProtectedRoute>
+      } />
+      <Route path="/admin/users" element={
+        <ProtectedRoute>
+          <AdminRoute>
+            <UserManagement />
+          </AdminRoute>
+        </ProtectedRoute>
+      } />
+      <Route path="/admin/analytics" element={
+        <ProtectedRoute>
+          <AdminRoute>
+            <Analytics />
+          </AdminRoute>
         </ProtectedRoute>
       } />
       <Route path="/" element={<Navigate to="/dashboard" replace />} />
