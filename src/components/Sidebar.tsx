@@ -7,15 +7,20 @@ import {
   Camera, 
   Calendar,
   Save,
-  Trash2,
   Database,
   DatabaseBackup,
   DatabaseZap,
-  Settings
+  Settings,
+  LogIn
 } from 'lucide-react';
 
 const Sidebar: React.FC = () => {
   const { user } = useAuth();
+
+  const guestNavItems = [
+    { to: '/capture', icon: Camera, label: 'Capture & Analyze' },
+    { to: '/login', icon: LogIn, label: 'Sign In' },
+  ];
 
   const userNavItems = [
     { to: '/dashboard', icon: DatabaseZap, label: 'Dashboard' },
@@ -34,7 +39,12 @@ const Sidebar: React.FC = () => {
     { to: '/settings', icon: Settings, label: 'Account Settings' },
   ];
 
-  const navItems = user?.role === 'admin' ? adminNavItems : userNavItems;
+  const getNavItems = () => {
+    if (!user) return guestNavItems;
+    return user.role === 'admin' ? adminNavItems : userNavItems;
+  };
+
+  const navItems = getNavItems();
 
   return (
     <aside className="w-64 bg-white shadow-lg border-r border-gray-200 min-h-screen">
